@@ -266,10 +266,13 @@ except ImportError:
 
 
 def find_driver():
-    print("Driver available:", drivers)
+#    print("Driver available:", drivers)
+    for driver in reversed(drivers):
+        _logger.debug("Driver available:" + str(driver))
 
     for driver in reversed(drivers):
         if driver.find():
-            print(" - Using:", driver)
+#            print(" - Using:", driver)
+            _logger.debug("Driver using:" + str(driver))
             return driver()
     raise DriverNotFound
